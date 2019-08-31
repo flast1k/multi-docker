@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t flast1k/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run flast1k/react-test npm test -- --watchAll=false --coverage
+
+after_success:
+  - docker build -t flast1k/multi-client ./client
+  - docker build -t flast1k/multi-nginx ./nginx
+  - docker build -t flast1k/multi-server ./server
+  - docker build -t flast1k/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCgKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push flast1k/multi-client
+  - docker push flast1k/multi-nginx
+  - docker push flast1k/multi-server
+  - docker push flast1k/multi-worker
