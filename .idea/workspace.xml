@@ -17,7 +17,8 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/client" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectId" id="1Q44Utmv4OyMAM0jcZBd13QCyEO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
