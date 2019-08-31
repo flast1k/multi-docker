@@ -14,7 +14,7 @@ after_success:
   - docker build -t flast1k/multi-server ./server
   - docker build -t flast1k/multi-worker ./worker
   # Log in to the docker CLI
-  - docker login -u $DOCKER_ID -p $DOCKER_PASSWORD
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push flast1k/multi-client
   - docker push flast1k/multi-nginx
